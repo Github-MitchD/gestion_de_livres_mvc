@@ -7,9 +7,6 @@ class Livre {
     private $auteur;
     private $image;
 
-    // LE TABLEAU DE LIVRE
-    public static $livres;
-
     // LE CONSTRUCTEUR
     public function __construct($id, $titre, $auteur, $image){
         //$this->id fait ref a l'attribut, $id fait ref au parametre de la fonction
@@ -17,9 +14,6 @@ class Livre {
         $this->titre = $titre;
         $this->auteur = $auteur;
         $this->image = $image;
-        //le tableau de livres $livres recupere chaque livre a la fin du tableau
-        //a chaque fois qu'un livre est construit
-        self::$livres[] = $this;
     }
 
     // GETTER/SETTER

@@ -1,7 +1,8 @@
 <?php
 
-//on a besoin de la classe Livre
+//on a besoin de la classe Livre & le LivreManager
 require_once "LivreClass.php";
+require_once "LivreManagerClass.php";
 
 //creation de 5 livres en utilisant la classe Livre
 //Ajout de ces livres dans la variable $livres de type tableau de Livre
@@ -11,8 +12,16 @@ $l3 = new Livre(3, "Le Chant d'Achille", "Madeline Miller", "livre3.jpg");
 $l4 = new Livre(4, "Jujutsu Kaisen", "Gege Akutami", "livre4.jpg");
 $l5 = new Livre(5, "Il etait deux fois", "Franck Thilliez", "livre5.jpg");
 
-//on met les 5 livres dans un tableau $livres
-// $livres = [$l1, $l2, $l3, $l4, $l5];
+//on crée un nouvel objet LivreManager en y ajoutant les livres
+$livreManager = new LivreManager;
+$livreManager->ajoutLivre($l1);
+$livreManager->ajoutLivre($l2);
+$livreManager->ajoutLivre($l3);
+$livreManager->ajoutLivre($l4);
+$livreManager->ajoutLivre($l5);
+
+//on mets ces livres dans le tableau de livres
+$livres = $livreManager->getLivres();
 
 ob_start(); ?>
 
@@ -30,13 +39,13 @@ ob_start(); ?>
     </thead>
     <tbody>
 
-        <?php for($i = 0; $i < count(Livre::$livres); $i++) : ?>
+        <?php for($i = 0; $i < count($livres); $i++) : ?>
 
             <tr class="table-light">
-                <th scope="row" class="align-middle">#<?= Livre::$livres[$i]->getId(); ?></th>
-                <td class="align-middle"><img src="public/img/<?= Livre::$livres[$i]->getImage(); ?>" width="70px"></td>
-                <td class="align-middle"><?= Livre::$livres[$i]->getTitre(); ?></td>
-                <td class="align-middle"><?= Livre::$livres[$i]->getAuteur(); ?></td>
+                <th scope="row" class="align-middle">#<?= $livres[$i]->getId(); ?></th>
+                <td class="align-middle"><img src="public/img/<?= $livres[$i]->getImage(); ?>" width="70px"></td>
+                <td class="align-middle"><?= $livres[$i]->getTitre(); ?></td>
+                <td class="align-middle"><?= $livres[$i]->getAuteur(); ?></td>
                 <td width=250 class="align-middle"><a href="#link" type="button" class="btn btn-outline-info">Voir</a>
                     <a href="#link" type="button" class="btn btn-outline-warning">Modifier</a>
                     <a href="#link" type="button" class="btn btn-outline-danger">Supprimer</a>
