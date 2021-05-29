@@ -9,7 +9,7 @@ abstract class Model {
     //on defini la fonction static pour la focntion de connection à la bdd
     private static function setBdd(){
         //on defini les valeurs de la connetion à la bdd
-        self::$pdo = new PDO("mysql:host=localhost; dbname=biblio_mvc; charset=utf-8", "root", "");
+        self::$pdo = new PDO("mysql:host=localhost; dbname=biblio_mvc; charset=utf8", "root", "");
         //on defini les élements de parametrage pour $pdo pour gérer les erreurs
         self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }
