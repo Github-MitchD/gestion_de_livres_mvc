@@ -1,9 +1,13 @@
-<?php ob_start(); ?>
-
-<p>Ici le contenu de la page d'accueil</p>
-
 <?php
 
-$content = ob_get_clean();
-$titre = "Bibliotheque";
-require "template.php";
+//si le $_GET est vide, on affiche la page accueil
+if(empty($_GET['page'])){
+    require "views/accueilView.php";
+}
+//sinon, on verifie la valeur du $_GET
+else {
+    switch($_GET['page']){
+        case "accueil" : require "views/accueilView.php";
+        break;
+    }
+}
