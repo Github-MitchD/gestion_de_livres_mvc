@@ -1,17 +1,5 @@
 <?php
 
-//on a besoin de la classe LivreManager
-require_once "LivreManagerClass.php";
-
-//on crée un nouvel objet LivreManager en y ajoutant les livres
-$livreManager = new LivreManager;
-
-//on recupere tous les livres de la bdd grace a la fonction chargementLivres() du LivreManager
-$livreManager->chargementLivres();
-
-//on mets ces livres dans le tableau de livres
-$livres = $livreManager->getLivres();
-
 ob_start(); ?>
 
 <a href="#link" type="button" class="btn btn-info mb-4">Ajouter un livre</a>
