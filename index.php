@@ -9,5 +9,7 @@ else {
     switch($_GET['page']){
         case "accueil" : require "views/accueilView.php";
         break;
+        case "livres": require "views/livresView.php";
+        break;
     }
 }

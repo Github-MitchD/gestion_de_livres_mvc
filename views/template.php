@@ -27,12 +27,12 @@
                         <div class="collapse navbar-collapse" id="navbarColor03">
                             <ul class="navbar-nav me-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="index.php">Accueil
+                                    <a class="nav-link active" href="accueil">Accueil
                                         <span class="visually-hidden">(current)</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="livres.php">Les Livres</a>
+                                    <a class="nav-link" href="livres">Les Livres</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Pricing</a>
