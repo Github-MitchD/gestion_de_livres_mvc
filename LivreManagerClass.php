@@ -1,5 +1,6 @@
 <?php
 require_once "modelClass.php";
+require_once "LivreClass.php";
 
 class LivreManager extends Model {
     //on definit le tableau de livres

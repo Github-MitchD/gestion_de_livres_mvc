@@ -1,24 +1,13 @@
 <?php
 
-//on a besoin de la classe Livre & le LivreManager
-require_once "LivreClass.php";
+//on a besoin de la classe LivreManager
 require_once "LivreManagerClass.php";
-
-//creation de 5 livres en utilisant la classe Livre
-//Ajout de ces livres dans la variable $livres de type tableau de Livre
-$l1 = new Livre(1, "Et que ne durent que les moments doux", "Virginie Grimaldi", "livre1.jpg");
-$l2 = new Livre(2, "Changer l'eau des fleurs", "Valérie Perrin", "livre2.jpg");
-$l3 = new Livre(3, "Le Chant d'Achille", "Madeline Miller", "livre3.jpg");
-$l4 = new Livre(4, "Jujutsu Kaisen", "Gege Akutami", "livre4.jpg");
-$l5 = new Livre(5, "Il etait deux fois", "Franck Thilliez", "livre5.jpg");
 
 //on crée un nouvel objet LivreManager en y ajoutant les livres
 $livreManager = new LivreManager;
-$livreManager->ajoutLivre($l1);
-$livreManager->ajoutLivre($l2);
-$livreManager->ajoutLivre($l3);
-$livreManager->ajoutLivre($l4);
-$livreManager->ajoutLivre($l5);
+
+//on recupere tous les livres de la bdd grace a la fonction chargementLivres() du LivreManager
+$livreManager->chargementLivres();
 
 //on mets ces livres dans le tableau de livres
 $livres = $livreManager->getLivres();
