@@ -11,7 +11,7 @@ ob_start(); ?>
             <th scope="col">Image</th>
             <th scope="col">Titre du livre</th>
             <th scope="col">Auteur</th>
-            <th scope="col">Actions</th>
+            <th scope="col" colspan="3">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -23,9 +23,20 @@ ob_start(); ?>
                 <td class="align-middle"><img src="public/img/<?= $livres[$i]->getImage(); ?>" width="70px"></td>
                 <td class="align-middle"><?= $livres[$i]->getTitre(); ?></td>
                 <td class="align-middle"><?= $livres[$i]->getAuteur(); ?></td>
-                <td width=250 class="align-middle"><a href="<?= URL ?>livres/read/<?= $livres[$i]->getId(); ?>" type="button" class="btn btn-outline-info">Voir</a>
+
+                <td width=10 class="align-middle">
+                    <a href="<?= URL ?>livres/read/<?= $livres[$i]->getId(); ?>" type="button" class="btn btn-outline-info">Voir</a>
+                </td>
+
+                <td width=10 class="align-middle">
                     <a href="#link" type="button" class="btn btn-outline-warning">Modifier</a>
-                    <a href="#link" type="button" class="btn btn-outline-danger">Supprimer</a>
+                </td>
+
+                <td width=10 class="align-middle">
+                    <!-- <a href="#link" type="button" class="btn btn-outline-danger">Supprimer</a> -->
+                    <form method="POST" action="<?= URL ?>livres/delete/<?= $livres[$i]->getId(); ?>" onsubmit="return confirm('Voulez-vous vraiment supprimer le livre ?')">
+                        <button href="#link" type="submit" class="btn btn-outline-danger">Supprimer</a>
+                    </form>
                 </td>
             </tr>
 

@@ -85,4 +85,22 @@ class LivreManager extends Model {
             $this->ajoutLivre($livre);
         }
     }
+
+    /**
+     * Fonction qu permet de supprimer un livre de la base de données en fonction de son id
+     * @param $id
+     */
+    public function suppressionLivreBdd($id){
+        $req = "DELETE from livres WHERE id = :idLivre";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":idLivre", $id, PDO::PARAM_INT);
+        
+        $resultat = $stmt->execute();
+        $stmt->closeCursor();
+        //si la requete s'est bien déroulé, on met a jour le tableau de livres ($livres)
+        if($resultat > 0){
+            $livre = $this->getLivreById($id);
+            unset($livre);
+        }
+    }
 }
