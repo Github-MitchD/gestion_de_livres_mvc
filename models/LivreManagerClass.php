@@ -60,7 +60,29 @@ class LivreManager extends Model {
             if($this->livres[$i]->getId() === $id){
                 return $this->livres[$i];
             }
+        }
+    }
 
+    /**
+     * Fonctions qui permet d'ajouter un livre dans la base de données
+     * @param $titre, $auteur, $image
+     */
+    public function ajoutLivreBdd($titre, $auteur, $image){
+        $req = "INSERT INTO livres (titre, auteur, image) values (:titre, :auteur, :image)";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue("titre", $titre, PDO::PARAM_STR);
+        $stmt->bindValue("auteur", $auteur, PDO::PARAM_STR);
+        $stmt->bindValue("image", $image, PDO::PARAM_STR);
+
+        $resultat = $stmt->execute();
+        $stmt->closeCursor();
+
+        //si la requete s'est bien deroulé, on ajoute le nouveau livre dans le tableau de livres ($livres)
+        if($resultat > 0){
+            //on instancie un nouveau Livre
+            $livre = new Livre($this->getBdd()->lastInsertId(), $titre, $auteur, $image);
+            //on l'ajoute dans le tableau livres
+            $this->ajoutLivre($livre);
         }
     }
 }

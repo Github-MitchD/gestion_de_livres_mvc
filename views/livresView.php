@@ -2,7 +2,7 @@
 
 ob_start(); ?>
 
-<a href="#link" type="button" class="btn btn-info mb-4">Ajouter un livre</a>
+<a href="<?= URL ?>livres/create" type="button" class="btn btn-info mb-4">Ajouter un livre</a>
 
 <table class="table table-hover">
     <thead>
