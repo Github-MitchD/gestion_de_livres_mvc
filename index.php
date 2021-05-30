@@ -33,14 +33,18 @@ try {
                 }
                 //si l'url contient un 2e param
                 else if ($url[1] === "read") {
-                    echo "Affichage d'un livre";
-                } else if ($url[1] === "create") {
+                    echo $livresController->afficherLivre($url[2]);
+                }
+                else if ($url[1] === "create") {
                     echo "Creation d'un livre";
-                } else if ($url[1] === "update") {
+                }
+                else if ($url[1] === "update") {
                     echo "Modification d'un livre";
-                } else if ($url[1] === "delete") {
+                }
+                else if ($url[1] === "delete") {
                     echo "Suppression d'un livre";
-                } else {
+                }
+                else {
                     throw new Exception("La page n'existe pas !");
                 }
                 break;

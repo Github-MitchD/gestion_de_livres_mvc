@@ -16,21 +16,21 @@ ob_start(); ?>
     </thead>
     <tbody>
 
-        <?php for($i = 0; $i < count($livres); $i++) : ?>
+        <?php for ($i = 0; $i < count($livres); $i++) : ?>
 
             <tr class="table-light">
                 <th scope="row" class="align-middle">#<?= $livres[$i]->getId(); ?></th>
                 <td class="align-middle"><img src="public/img/<?= $livres[$i]->getImage(); ?>" width="70px"></td>
                 <td class="align-middle"><?= $livres[$i]->getTitre(); ?></td>
                 <td class="align-middle"><?= $livres[$i]->getAuteur(); ?></td>
-                <td width=250 class="align-middle"><a href="#link" type="button" class="btn btn-outline-info">Voir</a>
+                <td width=250 class="align-middle"><a href="<?= URL ?>livres/read/<?= $livres[$i]->getId(); ?>" type="button" class="btn btn-outline-info">Voir</a>
                     <a href="#link" type="button" class="btn btn-outline-warning">Modifier</a>
                     <a href="#link" type="button" class="btn btn-outline-danger">Supprimer</a>
                 </td>
             </tr>
 
         <?php endfor; ?>
-        
+
     </tbody>
 </table>
 

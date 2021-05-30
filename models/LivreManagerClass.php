@@ -47,4 +47,20 @@ class LivreManager extends Model {
             $this->ajoutLivre($l);
         }
     }
+
+    /**
+     * Fonction qui permet de recuperer un livre en fonction de son id
+     * @param $id
+     * @return $this->livres[$i]
+     */
+    public function getLivreById($id){
+        //on parcours le tableau de livres
+        for($i = 0; $i < count($this->livres); $i++){
+            //on verifie si l'id du livre qu'on parcours est le meme que $id en param de la fonction
+            if($this->livres[$i]->getId() === $id){
+                return $this->livres[$i];
+            }
+
+        }
+    }
 }
