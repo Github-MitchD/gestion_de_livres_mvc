@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 //on defini la constante pour le chemin absolu
 define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") .

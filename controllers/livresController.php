@@ -23,6 +23,7 @@ class LivresController{
         //on mets ces livres dans le tableau de livres
         $livres = $this->livreManager->getLivres();
         require "views/livresView.php";
+        unset($_SESSION['alert']);
     }
 
     /**
@@ -30,8 +31,8 @@ class LivresController{
      * @param $id
      */
     public function afficherLivre($id){
-        $livre = $this->livreManager->getLivreById($id);
-        require "views/afficherLivreView.php";
+        $livre = $this->livreManager->getLivreById($id);        
+        require "views/afficherLivreView.php";        
     }
 
     /**
@@ -55,6 +56,11 @@ class LivresController{
 
         //on appel la fonction ajoutLivreBdd() du livreManager
         $this->livreManager->ajoutLivreBdd($_POST['titre'], $_POST['auteur'], $nomImageAjoute);
+
+        $_SESSION['alert'] = [
+            "type" => "success",
+            "msg" => "Ajout réalisé"
+        ];
 
         header('Location: '. URL . "livres");
     }
@@ -127,6 +133,12 @@ class LivresController{
         }
         //on appelle la fonction modificationLivreBdd du LivreManager avec les valeurs des input 
         $this->livreManager->modificationLivreBdd($_POST["identifiant"], $_POST["titre"], $_POST["auteur"], $nomImageToAdd);
+
+        $_SESSION['alert'] = [
+            "type" => "success",
+            "msg" => "La modification a été réalisée"
+        ];
+
         header("Location: ".URL."livres");
     }
 
@@ -144,6 +156,11 @@ class LivresController{
         
         //on appel la fonction suppressionLivreBdd du livreManager
         $this->livreManager->suppressionLivreBdd($id);
+
+        $_SESSION['alert'] = [
+            "type" => "success",
+            "msg" => "La suppression a été réalisée"
+        ];
 
         header('Location: ' . URL . "livres");
     }

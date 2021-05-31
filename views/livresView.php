@@ -1,6 +1,13 @@
 <?php
 
-ob_start(); ?>
+ob_start();
+if (!empty($_SESSION['alert'])) :
+?>
+    <div class="alert alert-<?= $_SESSION['alert']['type'] ?> alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole ! </strong> <?= $_SESSION['alert']['msg'] ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php endif; ?>
 
 <a href="<?= URL ?>livres/create" type="button" class="btn btn-info mb-4">Ajouter un livre</a>
 
@@ -33,7 +40,6 @@ ob_start(); ?>
                 </td>
 
                 <td width=10 class="align-middle">
-                    <!-- <a href="#link" type="button" class="btn btn-outline-danger">Supprimer</a> -->
                     <form method="POST" action="<?= URL ?>livres/delete/<?= $livres[$i]->getId(); ?>" onsubmit="return confirm('Voulez-vous vraiment supprimer le livre ?')">
                         <button href="#link" type="submit" class="btn btn-outline-danger">Supprimer</a>
                     </form>
