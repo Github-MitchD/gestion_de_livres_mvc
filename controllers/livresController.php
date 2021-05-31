@@ -95,6 +95,43 @@ class LivresController{
     }
 
     /**
+     * Fonction qui permet de recuperer un livre a modifier en fonction de son id
+     * @param $id
+     */
+    public function modificationLivre($id){
+        //on recup les infos du livre grace a son id
+        $livre = $this->livreManager->getLivreById($id);
+
+        //on transmets ces valeurs a la vue de modification
+        require "views/modifierLivreView.php";
+    }
+
+    /**
+     * Permet de modifier un livre
+     */
+    public function modificationLivreValidation(){
+        //on recup l'img actuelle du livre qu'on veut mmodifier
+        $imageActuelle = $this->livreManager->getLivreById($_POST['identifiant'])->getImage();
+
+        //on verifie si une nouvelle img a été inserer dans l'input files
+        $file = $_FILES['image'];
+        if($file['size'] > 0){
+            //si une nouvelle image a été insérer dans l'input, on suppr l'actuelle du dossier
+            unlink("public/img/".$imageActuelle);
+            $repertoire = "public/img/";
+            //on met la nouvelle img dans la variable
+            $nomImageToAdd = $this->ajoutImage($file, $repertoire);
+        } else {
+            //si pas de nouvelle img, on garde l'actuelle qu'on remet dans la var $nomImageToAdd
+            $nomImageToAdd = $imageActuelle;
+        }
+        //on appelle la fonction modificationLivreBdd du LivreManager avec les valeurs des input 
+        $this->livreManager->modificationLivreBdd($_POST["identifiant"], $_POST["titre"], $_POST["auteur"], $nomImageToAdd);
+        header("Location: ".URL."livres");
+    }
+
+
+    /**
      * Fonction qui permet de supprimer un livre
      * @param $id
      */

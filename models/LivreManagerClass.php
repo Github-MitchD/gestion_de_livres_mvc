@@ -87,6 +87,29 @@ class LivreManager extends Model {
     }
 
     /**
+     * Fonction qui permet de modifier un livre
+     */
+    public function modificationLivreBdd($id, $titre,$auteur,$image){
+        $req = "UPDATE livres set titre = :titre, auteur = :auteur, image = :image WHERE id = :id";
+        $stmt = $this->getBdd()->prepare($req);
+
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->bindValue(":titre", $titre, PDO::PARAM_STR);
+        $stmt->bindValue(":auteur", $auteur, PDO::PARAM_STR);
+        $stmt->bindValue(":image", $image, PDO::PARAM_STR);
+
+        $resultat = $stmt->execute();
+        $stmt->closeCursor();
+
+        //si c'est ok, on met a jour le livre
+        if($resultat > 0){
+            $this->getLivreById($id)->setTitre($titre);
+            $this->getLivreById($id)->setTitre($auteur);
+            $this->getLivreById($id)->setTitre($image);
+        }
+    }
+
+    /**
      * Fonction qu permet de supprimer un livre de la base de données en fonction de son id
      * @param $id
      */

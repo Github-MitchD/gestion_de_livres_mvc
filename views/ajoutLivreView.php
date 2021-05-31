@@ -10,7 +10,7 @@
         <input type="text" class="form-control" id="auteur" name="auteur">
     </div>
     <div class="mb-3">
-        <label for="image" class="form-label">Default file input example</label>
+        <label for="image" class="form-label">Image du livre</label>
         <input class="form-control" type="file" id="image" name="image">
     </div>
     <button type="submit" class="btn btn-primary">Ajouter</button>

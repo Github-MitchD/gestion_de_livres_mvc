@@ -39,13 +39,16 @@ try {
                     $livresController->createLivre();
                 }
                 else if ($url[1] === "update") {
-                    echo "Modification d'un livre";
+                    $livresController->modificationLivre($url[2]);
                 }
                 else if ($url[1] === "delete") {
                     $livresController->suppressionLivre($url[2]);
                 }
                 else if ($url[1] === "av") {
                     $livresController->ajoutLivreValidation();
+                }
+                else if ($url[1] === "mv") {
+                    $livresController->modificationLivreValidation();
                 }
                 else {
                     throw new Exception("La page n'existe pas !");

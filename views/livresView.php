@@ -29,7 +29,7 @@ ob_start(); ?>
                 </td>
 
                 <td width=10 class="align-middle">
-                    <a href="#link" type="button" class="btn btn-outline-warning">Modifier</a>
+                    <a href="<?= URL ?>livres/update/<?= $livres[$i]->getId(); ?>" type="button" class="btn btn-outline-warning">Modifier</a>
                 </td>
 
                 <td width=10 class="align-middle">
