@@ -63,5 +63,6 @@ try {
 
 } //fin du try
 catch (Exception $e) {
-    echo $e->getMessage();
+    $msg = $e->getMessage();
+    require "views/errorViews.php";
 }
